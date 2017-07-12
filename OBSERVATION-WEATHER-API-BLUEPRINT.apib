@@ -115,6 +115,18 @@ Here are relationship between observation periods and fields appropriately:
                 maxWindGustInKilometerPerHour, maxWindGustInMilesPerHour, maxWindGustInBeaufort, maxWindGustInKnots, pressureTendencyDescription, pressureTendencyCode, pressureChangeInHectoPascal,
                 freshSnowfallInCentimeter, freshSnowfallInInch
 
+List of mandatory fields:
+
+- **PT0S** -    airTemperatureInCelsius, airTemperatureInFahrenheit, airTemperatureInKelvin, feelsLikeTemperatureInCelsius, feelsLikeTemperatureInFahrenheit, feelsLikeTemperatureInKelvin, airPressureInHectoPascal,
+                windSpeedInMeterPerSecond, windSpeedInKilometerPerHour, windSpeedInMilesPerHour, windSpeedInBeaufort, windSpeedInKnots, windDirectionInDegree, dewPointTemperatureInCelsius, dewPointTemperatureInFahrenheit,
+                dewPointTemperatureInKelvin, relativeHumidityInPercent, effectiveCloudCoverInOcta, totalCloudCoverInOcta, visibilityInMeter, visibilityInKilometer, visibilityInNauticalMile, visibilityInStatuteMile, weatherCode,
+                weatherCodeTraditional, snowDepthInCentimeter, snowDepthInInch, waterTemperatureInCelsius, waterTemperatureInFahrenheit, waterTemperatureInKelvin, totalWaveHeightInMeter, totalWavePeriodInSecond, seaHeightInMeter,
+                seaHeightInFeet, seaPeriodInSecond
+
+- **PT1H** -    windGustInMeterPerSecond, windGustInKilometerPerHour, windGustInMilesPerHour, windGustInBeaufort, windGustInKnots, pressureTendencyDescription, pressureTendency, pressureTendencyCode, pressureChangeInHectoPascal,
+                precipitationAmountInMillimeter, precipitationAmountInInch, freshSnowfallInCentimeter, freshSnowfallInInch
+
+
 The "weatherCode" parameter refers to the WMO code table "0 20 003 - Present weather".
 The "weatherCodeTraditional" parameter refers to the WMO code table "4677".
 
@@ -127,6 +139,7 @@ The "weatherCodeTraditional" parameter refers to the WMO code table "4677".
     + observedUntil: `2016-10-15T09:00:00Z` (string, optional) - ISO8601 timestamp notation, means incl. this timestamp; always provide a time offset, e.g. 'Z' for UTC; optional: a request may provide correct offset (so that server can convert to UTC).
     + observedPeriod: `PT0S,PT1H,PT3H,PT12H,PT24H` (string, required) - comma separated list of periods to be retrieved. use ISO8601 time duration notation. PT0S refers to observations at a moment in time. PT1H applies one hour aggregation.
     + timeZone: `Europe/Paris` (string, optional) - Time zone refers to the IANA Time Zone Database (TZDB).
+    + mandatoryFields: 'windSpeedInMilesPerHour,windGustInBeaufort' - list of fields which the station must reports.
 
 ### Search for observation data for multiple given locations [GET]
 
